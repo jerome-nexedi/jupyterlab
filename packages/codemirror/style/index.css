@@ -98,6 +98,7 @@
 */
 
 
+.cm-s-jupyter.CodeMirror           { background: #FFF; }
 .cm-s-jupyter span.cm-keyword      { color: #008000; font-weight: bold; }
 .cm-s-jupyter span.cm-atom         { color: #88F; }
 .cm-s-jupyter span.cm-number       { color: #080; }
