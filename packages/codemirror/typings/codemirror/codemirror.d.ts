@@ -186,7 +186,8 @@ declare module CodeMirror {
         /** Attach a new document to the editor. Returns the old document, which is now no longer associated with an editor. */
         swapDoc(doc: CodeMirror.Doc): CodeMirror.Doc;
 
-
+        /** Runs the command with the given name on the editor. */
+        execCommand(name: String): void;
 
         /** Sets the gutter marker for the given gutter (identified by its CSS class, see the gutters option) to the given value.
         Value can be either null, to clear the marker, or a DOM element, to set it. The DOM element will be shown in the specified gutter next to the specified line. */
