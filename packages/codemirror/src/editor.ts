@@ -368,6 +368,27 @@ class CodeMirrorEditor implements CodeEditor.IEditor {
   }
 
   /**
+   * open find dialog from search.
+   */
+  openFindDialog(): void {
+    this._editor.execCommand("find");
+  }
+
+  /**
+   * open search and replace dialog.
+   */
+  openReplaceDialog(): void {
+    this._editor.execCommand("replace");
+  }
+
+  /**
+   * open jump to line dialog.
+   */
+  openJumpToLineDialog(): void {
+    this._editor.execCommand("jumpToLine");
+  }
+
+  /**
    * Add a keydown handler to the editor.
    *
    * @param handler - A keydown handler.
