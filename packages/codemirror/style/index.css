@@ -18,6 +18,7 @@
 @import url('~codemirror/theme/the-matrix.css');
 @import url('~codemirror/theme/xq-light.css');
 
+@import url('~codemirror/addon/dialog/dialog.css');
 
 .CodeMirror {
   line-height: var(--jp-code-line-height);
