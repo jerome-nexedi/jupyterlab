@@ -368,6 +368,15 @@ class CodeMirrorEditor implements CodeEditor.IEditor {
   }
 
   /**
+   * Execute a codemirror command.
+   *
+   *  @param name - Name of comand to execute.
+   */
+  execCommand(name: String): void {
+    this._editor.execCommand(name);
+  }
+
+  /**
    * Add a keydown handler to the editor.
    *
    * @param handler - A keydown handler.
