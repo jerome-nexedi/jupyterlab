@@ -34,6 +34,8 @@ class CodeMirrorEditorFactory implements IEditorFactoryService {
         'Ctrl-Alt-[': 'indentAuto',
         'Cmd-/': 'toggleComment',
         'Ctrl-/': 'toggleComment',
+        'Ctrl-F': () => { /* no-op */ },
+        'Cmd-F': () => { /* no-op */ }
       }
     };
     this.documentCodeMirrorOptions = {
