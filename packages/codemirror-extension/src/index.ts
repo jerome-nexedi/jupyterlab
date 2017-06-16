@@ -52,6 +52,15 @@ namespace CommandIDs {
 
   export
   const changeTabs = 'codemirror:change-tabs';
+
+  export
+  const search = 'codemirror:search';
+
+  export
+  const searchReplace = 'codemirror:search-replace';
+
+  export
+  const jumpToLine = 'codemirror:jump-to-line';
 };
 
 
@@ -163,6 +172,15 @@ function activateEditorCommands(app: JupyterLab, tracker: IEditorTracker, mainMe
    */
   function hasWidget(): boolean {
     return tracker.currentWidget !== null;
+  }
+
+  /**
+   * A test for whether editor has focus.
+   */
+  function isEditorVisible(): boolean {
+    return (tracker.currentWidget !== null &&
+            tracker.currentWidget.editor instanceof CodeMirrorEditor &&
+            tracker.currentWidget.isVisible);
   }
 
   /**
@@ -319,6 +337,10 @@ function activateEditorCommands(app: JupyterLab, tracker: IEditorTracker, mainMe
     menu.addItem({ command: CommandIDs.matchBrackets });
     menu.addItem({ type: 'submenu', submenu: keyMapMenu });
     menu.addItem({ type: 'submenu', submenu: themeMenu });
+    menu.addItem({ type: 'separator' });
+    menu.addItem({ command: CommandIDs.search });
+    menu.addItem({ command: CommandIDs.searchReplace });
+    menu.addItem({ command: CommandIDs.jumpToLine });
 
     return menu;
   }
@@ -342,10 +364,46 @@ function activateEditorCommands(app: JupyterLab, tracker: IEditorTracker, mainMe
     isToggled: () => matchBrackets
   });
 
+  commands.addCommand(CommandIDs.search, {
+    label: 'Search',
+    execute: args => {
+      let widget = tracker.currentWidget;
+      if (widget.editor instanceof CodeMirrorEditor) {
+        widget.editor.execCommand("find");
+      }
+    },
+    isEnabled: isEditorVisible
+  });
+
+  commands.addCommand(CommandIDs.searchReplace, {
+    label: 'Search and Replace',
+    execute: args => {
+      let widget = tracker.currentWidget;
+      if (widget.editor instanceof CodeMirrorEditor) {
+        widget.editor.execCommand("replace");
+      }
+    },
+    isEnabled: isEditorVisible
+  });
+
+  commands.addCommand(CommandIDs.jumpToLine, {
+    label: 'Jump to Line',
+    execute: args => {
+      let widget = tracker.currentWidget;
+      if (widget.editor instanceof CodeMirrorEditor) {
+        widget.editor.execCommand("jumpToLine");
+      }
+    },
+    isEnabled: isEditorVisible
+  });
+
   [
     'editor:line-numbers',
     'editor:line-wrap',
     CommandIDs.matchBrackets,
+    CommandIDs.search,
+    CommandIDs.searchReplace,
+    CommandIDs.jumpToLine,
     'editor:create-console',
     'editor:run-code'
   ].forEach(command => palette.addItem({ command, category: 'Editor' }));
