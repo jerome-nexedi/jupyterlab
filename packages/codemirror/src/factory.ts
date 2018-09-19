@@ -35,7 +35,8 @@ export class CodeMirrorEditorFactory implements IEditorFactoryService {
         'Ctrl-/': 'toggleComment',
         'Shift-Enter': () => {
           /* no-op */
-        }
+        },
+        'Ctrl-Space': 'autocomplete'
       },
       lineNumbers: true,
       scrollPastEnd: true,
