@@ -83,6 +83,12 @@ declare namespace CodeMirror {
     whenever a new CodeMirror instance is initialized. */
   function defineInitHook(func: Function): void;
 
+  /** XXX: register a helper
+   */
+  function registerHelper(helperType: string, mode: string, helper: any): void;
+  /** XXX: codemirror.hint object */
+  var hint: any;
+
   function on(element: any, eventName: string, handler: Function): void;
   function off(element: any, eventName: string, handler: Function): void;
 

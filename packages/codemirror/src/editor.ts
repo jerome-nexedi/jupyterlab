@@ -37,6 +37,11 @@ import 'codemirror/keymap/emacs.js';
 import 'codemirror/keymap/sublime.js';
 import 'codemirror/keymap/vim.js';
 
+/** XXX use anyword hint for python
+ * I find anyword more useful than default python hints
+ */
+CodeMirror.registerHelper('hint', 'python', CodeMirror.hint.anyword);
+
 /**
  * The class name added to CodeMirrorWidget instances.
  */
