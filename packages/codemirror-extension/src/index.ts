@@ -85,7 +85,7 @@ function activateEditorCommands(
   settingRegistry: ISettingRegistry
 ): void {
   const { commands, restored } = app;
-  let { theme, keyMap } = CodeMirrorEditor.defaultConfig;
+  let { theme, keyMap, showTrailingSpace } = CodeMirrorEditor.defaultConfig;
 
   /**
    * Update the setting values.
@@ -93,6 +93,7 @@ function activateEditorCommands(
   function updateSettings(settings: ISettingRegistry.ISettings): void {
     keyMap = (settings.get('keyMap').composite as string | null) || keyMap;
     theme = (settings.get('theme').composite as string | null) || theme;
+    showTrailingSpace = (settings.get('showTrailingSpace').composite as boolean | null) || showTrailingSpace;
   }
 
   /**
@@ -104,6 +105,7 @@ function activateEditorCommands(
         let cm = widget.content.editor.editor;
         cm.setOption('keyMap', keyMap);
         cm.setOption('theme', theme);
+        cm.setOption('showTrailingSpace', showTrailingSpace);
       }
     });
   }
@@ -131,6 +133,7 @@ function activateEditorCommands(
       let cm = widget.content.editor.editor;
       cm.setOption('keyMap', keyMap);
       cm.setOption('theme', theme);
+      cm.setOption('showTrailingSpace', showTrailingSpace);
     }
   });
 

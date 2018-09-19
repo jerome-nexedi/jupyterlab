@@ -39,6 +39,7 @@ export class CodeMirrorEditorFactory implements IEditorFactoryService {
         'Ctrl-Space': 'autocomplete'
       },
       lineNumbers: true,
+      showTrailingSpace: true,
       scrollPastEnd: true,
       ...defaults
     };

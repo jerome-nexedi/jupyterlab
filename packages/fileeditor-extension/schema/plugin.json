@@ -36,6 +36,9 @@
         "insertSpaces": {
           "type": "boolean"
         },
+        "showTrailingSpace": {
+          "type": "boolean"
+        },
         "tabSize": {
           "type": "number"
         },
@@ -61,6 +64,7 @@
         "lineWrap": "on",
         "matchBrackets": true,
         "readOnly": false,
+        "showTrailingSpace": true,
         "insertSpaces": true,
         "tabSize": 4,
         "wordWrapColumn": 80

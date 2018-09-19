@@ -28,6 +28,7 @@ import { Mode } from './mode';
 import 'codemirror/addon/comment/comment.js';
 import 'codemirror/addon/edit/matchbrackets.js';
 import 'codemirror/addon/edit/closebrackets.js';
+import 'codemirror/addon/edit/trailingspace.js';
 import 'codemirror/addon/scroll/scrollpastend.js';
 import 'codemirror/addon/search/searchcursor';
 import 'codemirror/addon/search/search';
@@ -1148,7 +1149,8 @@ export namespace CodeMirrorEditor {
     lineSeparator: null,
     scrollbarStyle: 'native',
     lineWiseCopyCut: true,
-    scrollPastEnd: false
+    scrollPastEnd: false,
+    showTrailingSpace: true
   };
 
   /**
@@ -1184,6 +1186,7 @@ namespace Private {
       wordWrapColumn,
       tabSize,
       readOnly,
+      showTrailingSpace,
       ...otherOptions
     } = config;
     let bareConfig = {
@@ -1192,6 +1195,7 @@ namespace Private {
       indentWithTabs: !insertSpaces,
       lineWrapping: lineWrap === 'off' ? false : true,
       readOnly,
+      showTrailingSpace,
       ...otherOptions
     };
     return CodeMirror(el => {

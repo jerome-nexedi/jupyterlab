@@ -637,6 +637,11 @@ export namespace CodeEditor {
      * The column where to break text line.
      */
     wordWrapColumn: number;
+
+    /**
+     * Show trailing space
+     */
+    showTrailingSpace: boolean;
   }
 
   /**
@@ -650,6 +655,7 @@ export namespace CodeEditor {
     lineWrap: 'on',
     wordWrapColumn: 80,
     readOnly: false,
+    showTrailingSpace: true,
     tabSize: 4,
     insertSpaces: true,
     matchBrackets: true,
